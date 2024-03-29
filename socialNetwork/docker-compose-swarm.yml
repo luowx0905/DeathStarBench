@@ -21,6 +21,9 @@ services:
     deploy:
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     depends_on:
       - jaeger-collector
 
@@ -32,6 +35,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["ComposePostService"]
     hostname: compose-post-service
     image: deathstarbench/social-network-microservices:latest
@@ -49,6 +55,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   home-timeline-service:
     depends_on:
@@ -58,6 +68,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: deathstarbench/social-network-microservices:latest
@@ -73,6 +86,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     hostname: media-frontend
     image: yg397/media-frontend:xenial
     ports:
@@ -92,6 +108,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   media-mongodb:
     depends_on:
@@ -104,6 +124,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   media-service:
     depends_on:
@@ -114,6 +138,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["MediaService"]
     hostname: media-service
     image: deathstarbench/social-network-microservices:latest
@@ -129,6 +156,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -153,6 +183,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   post-storage-mongodb:
     depends_on:
@@ -165,6 +199,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   post-storage-service:
     depends_on:
@@ -175,6 +213,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: deathstarbench/social-network-microservices:latest
@@ -193,6 +234,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   social-graph-redis:
     depends_on:
@@ -204,6 +249,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   social-graph-service:
     depends_on:
@@ -214,6 +263,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: deathstarbench/social-network-microservices:latest
@@ -229,6 +281,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["TextService"]
     hostname: text-service
     image: deathstarbench/social-network-microservices:latest
@@ -244,6 +299,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: deathstarbench/social-network-microservices:latest
@@ -262,6 +320,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   url-shorten-mongodb:
     depends_on:
@@ -274,6 +336,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   url-shorten-service:
     depends_on:
@@ -284,6 +350,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: deathstarbench/social-network-microservices:latest
@@ -302,6 +371,10 @@ services:
       - "-t 8"
       - "-I 32m"
       - "-c 4096"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   user-mention-service:
     depends_on:
@@ -311,6 +384,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: deathstarbench/social-network-microservices:latest
@@ -329,6 +405,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   user-service:
     depends_on:
@@ -339,6 +419,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["UserService"]
     hostname: user-service
     image: deathstarbench/social-network-microservices:latest
@@ -357,6 +440,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   user-timeline-redis:
     depends_on:
@@ -368,6 +455,10 @@ services:
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
   user-timeline-service:
     depends_on:
@@ -377,6 +468,9 @@ services:
       replicas: 1
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: deathstarbench/social-network-microservices:latest
@@ -398,6 +492,9 @@ services:
     deploy:
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     depends_on:
       - cassandra-schema
 
@@ -410,6 +507,9 @@ services:
     deploy:
       restart_policy:
         condition: any
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     depends_on:
       - cassandra-schema
 
@@ -418,12 +518,18 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
     depends_on:
       - cassandra
 
   cassandra:
     image: cassandra:3.9
     deploy:
+      placement:
+        constraints:
+          - node.hostname == picard02.doc.ic.ac.uk
 
 networks:
   default:
