@@ -23,7 +23,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     depends_on:
       - jaeger-collector
 
@@ -37,7 +37,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     command: ["ComposePostService"]
     hostname: compose-post-service
     image: deathstarbench/social-network-microservices:latest
@@ -58,7 +58,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   home-timeline-service:
     depends_on:
@@ -70,7 +70,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: deathstarbench/social-network-microservices:latest
@@ -111,7 +111,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   media-mongodb:
     depends_on:
@@ -127,7 +127,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
 
   media-service:
     depends_on:
@@ -140,7 +140,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
     command: ["MediaService"]
     hostname: media-service
     image: deathstarbench/social-network-microservices:latest
@@ -158,7 +158,12 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
+      resources:
+        limits:
+          memory: 75M
+        reservations:
+          memory: 50M
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -186,7 +191,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
 
   post-storage-mongodb:
     depends_on:
@@ -202,7 +207,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
 
   post-storage-service:
     depends_on:
@@ -215,7 +220,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard06
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: deathstarbench/social-network-microservices:latest
@@ -237,7 +242,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard06
 
   social-graph-redis:
     depends_on:
@@ -252,7 +257,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard06
 
   social-graph-service:
     depends_on:
@@ -265,7 +270,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard06
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: deathstarbench/social-network-microservices:latest
@@ -283,7 +288,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard06
     command: ["TextService"]
     hostname: text-service
     image: deathstarbench/social-network-microservices:latest
@@ -301,7 +306,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: deathstarbench/social-network-microservices:latest
@@ -323,7 +328,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   url-shorten-mongodb:
     depends_on:
@@ -339,7 +344,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   url-shorten-service:
     depends_on:
@@ -352,7 +357,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: deathstarbench/social-network-microservices:latest
@@ -374,7 +379,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   user-mention-service:
     depends_on:
