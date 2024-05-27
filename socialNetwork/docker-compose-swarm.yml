@@ -23,7 +23,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard04
+          - node.hostname == picard00
     depends_on:
       - jaeger-collector
 
@@ -58,7 +58,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard04
+          - node.hostname == picard05
 
   home-timeline-service:
     depends_on:
@@ -70,7 +70,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard04
+          - node.hostname == picard05
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: deathstarbench/social-network-microservices:latest
@@ -88,7 +88,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     hostname: media-frontend
     image: yg397/media-frontend:xenial
     ports:
@@ -220,7 +220,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard06
+          - node.hostname == picard05
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: deathstarbench/social-network-microservices:latest
@@ -242,7 +242,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard06
+          - node.hostname == picard05
 
   social-graph-redis:
     depends_on:
@@ -257,7 +257,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard06
+          - node.hostname == picard05
 
   social-graph-service:
     depends_on:
@@ -270,7 +270,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard06
+          - node.hostname == picard05
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: deathstarbench/social-network-microservices:latest
@@ -288,7 +288,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard06
+          - node.hostname == picard05
     command: ["TextService"]
     hostname: text-service
     image: deathstarbench/social-network-microservices:latest
@@ -391,7 +391,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: deathstarbench/social-network-microservices:latest
@@ -413,7 +413,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   user-service:
     depends_on:
@@ -426,7 +426,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
     command: ["UserService"]
     hostname: user-service
     image: deathstarbench/social-network-microservices:latest
@@ -448,7 +448,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
 
   user-timeline-redis:
     depends_on:
@@ -463,7 +463,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
 
   user-timeline-service:
     depends_on:
@@ -475,7 +475,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: deathstarbench/social-network-microservices:latest
@@ -499,7 +499,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard00
     depends_on:
       - cassandra-schema
 
@@ -514,7 +514,7 @@ services:
         condition: any
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard00
     depends_on:
       - cassandra-schema
 
@@ -525,7 +525,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard04
     depends_on:
       - cassandra
 
@@ -534,7 +534,7 @@ services:
     deploy:
       placement:
         constraints:
-          - node.hostname == picard02.doc.ic.ac.uk
+          - node.hostname == picard05
 
 networks:
   default:
